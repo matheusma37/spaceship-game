@@ -114,3 +114,65 @@
     background-position: -528px;
   }
 }
+
+#explosion3 {
+  width: 44px;
+  height: 51px;
+  position: absolute;
+}
+
+.animation_friend_death {
+  width: 44px;
+  height: 51px;
+  background-image: url(../images/friend_death.png);
+  animation: play_friend_death .5s steps(7) infinite;
+  -webkit-animation: play_friend_death .5s steps(7) infinite;
+  -moz-animation: play_friend_death .5s steps(7) infinite;
+  -ms-animation: play_friend_death .5s steps(7) infinite;
+  -o-animation: play_friend_death .5s steps(7) infinite;
+}
+
+@keyframes play_friend_death {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -308px;
+  }
+}
+
+@-webkit-keyframes play_friend_death {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -308px;
+  }
+}
+
+@-moz-keyframes play_friend_death {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -308px;
+  }
+}
+
+@-ms-keyframes play_friend_death {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -308px;
+  }
+}
+
+@-o-keyframes play_friend_death {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -308px;
+  }
+}

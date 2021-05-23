@@ -168,6 +168,15 @@ function start() {
       replaceFriend();
       $("#friend").remove();
     }
+
+    if (collision6.length > 0) {
+      friendX = parseInt($("#friend").css("left"));
+      friendY = parseInt($("#friend").css("top"));
+      explosion3(friendX, friendY);
+
+      $("#friend").remove();
+      replaceFriend();
+    }
   }
 
   function explosion1(enemy1X, enemy1Y) {
@@ -201,6 +210,19 @@ function start() {
       div2.remove();
       window.clearInterval(timeExplosion2);
       timeExplosion2 = null;
+    }
+  }
+
+  function explosion3(friendX, friendY) {
+    $("#background-game").append("<div id='explosion3' class='animation_friend_death'></div");
+    $("#explosion3").css("top", friendY);
+    $("#explosion3").css("left", friendX);
+
+    var timeExplosion3 = window.setInterval(resetExplosion3, 1000);
+    function resetExplosion3() {
+      $("#explosion3").remove();
+      window.clearInterval(timeExplosion3);
+      timeExplosion3 = null;
     }
   }
 
