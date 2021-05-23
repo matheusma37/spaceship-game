@@ -23,7 +23,7 @@ function start() {
     D: 68
   }
 
-  const SPEED = 5;
+  var speed = 5;
   var enemy1PositionY = parseInt(Math.random() * 334);
   var canShoot = true;
   var gameOver = false;
@@ -69,7 +69,7 @@ function start() {
 
   function moveEnemy1() {
     positionX = parseInt($("#enemy1").css("left"));
-    $("#enemy1").css("left", positionX - SPEED);
+    $("#enemy1").css("left", positionX - speed);
     $("#enemy1").css("top", enemy1PositionY);
 
     if (positionX <= -30) {
@@ -152,6 +152,7 @@ function start() {
     }
 
     if (collision3.length > 0) {
+      speed += 0.3;
       game.points += 100;
 
       let enemy1X = parseInt($("#enemy1").css("left"));
