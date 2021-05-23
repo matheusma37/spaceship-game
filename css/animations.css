@@ -1,0 +1,116 @@
+.animation_player {
+  background-image: url(../images/apache.png);
+  animation: play_helicopter .5s steps(2) infinite;
+  -webkit-animation: play_helicopter .5s steps(2) infinite;
+  -moz-animation: play_helicopter .5s steps(2) infinite;
+  -ms-animation: play_helicopter .5s steps(2) infinite;
+  -o-animation: play_helicopter .5s steps(2) infinite;
+}
+
+@keyframes play_helicopter {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -512px;
+  }
+}
+
+@-webkit-keyframes play_helicopter {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -512px;
+  }
+}
+
+@-moz-keyframes play_helicopter {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -512px;
+  }
+}
+
+@-ms-keyframes play_helicopter {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -512px;
+  }
+}
+
+@-o-keyframes play_helicopter {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -512px;
+  }
+}
+
+.animation_enemy1 {
+  background-image: url(../images/enemy1.png);
+  animation: play_helicopter .5s steps(2) infinite;
+  -webkit-animation: play_helicopter .5s steps(2) infinite;
+  -moz-animation: play_helicopter .5s steps(2) infinite;
+  -ms-animation: play_helicopter .5s steps(2) infinite;
+  -o-animation: play_helicopter .5s steps(2) infinite;
+}
+
+.animation_friend {
+  background-image: url(../images/friend.png);
+  animation: play_friend .9s steps(12) infinite;
+  -webkit-animation: play_friend .9s steps(12) infinite;
+  -moz-animation: play_friend .9s steps(12) infinite;
+  -ms-animation: play_friend .9s steps(12) infinite;
+  -o-animation: play_friend .9s steps(12) infinite;
+}
+
+@keyframes play_friend {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -528px;
+  }
+}
+
+@-webkit-keyframes play_friend {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -528px;
+  }
+}
+
+@-moz-keyframes play_friend {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -528px;
+  }
+}
+
+@-ms-keyframes play_friend {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -528px;
+  }
+}
+
+@-o-keyframes play_friend {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -528px;
+  }
+}
