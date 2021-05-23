@@ -24,6 +24,8 @@ function start() {
     moveBackground();
     movePlayer();
     moveEnemy1();
+    moveEnemy2();
+    moveFriend();
   }
 
   $(document).keydown(function (e) {
@@ -68,5 +70,23 @@ function start() {
   function moveBackground() {
     left = parseInt($("#background-game").css("background-position"));
     $("#background-game").css("background-position", left - 1);
+  }
+
+  function moveEnemy2() {
+    positionX = parseInt($("#enemy2").css("left"));
+    $("#enemy2").css("left", positionX - 3);
+
+    if (positionX <= 0) {
+      $("#enemy2").css("left", 775);
+    }
+  }
+
+  function moveFriend() {
+    positionX = parseInt($("#friend").css("left"));
+    $("#friend").css("left", positionX + 1);
+
+    if (positionX > 906) {
+      $("#friend").css("left", 0);
+    }
   }
 }
