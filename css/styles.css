@@ -39,3 +39,39 @@ body {
   text-align: center;
   padding: 10px;
 }
+
+#player {
+  width: 256px;
+  height: 66px;
+  position: absolute;
+  left: 8px;
+  top: 179px;
+  background-image: url(../images/apache.png);
+}
+
+#enemy1 {
+  width: 256px;
+  height: 66px;
+  position: absolute;
+  left: 689px;
+  top: 253px;
+  background-image: url(../images/enemy1.png);
+}
+
+#enemy2 {
+  width: 165px;
+  height: 70px;
+  position: absolute;
+  left: 775px;
+  top: 447px;
+  background-image: url(../images/enemy2.png);
+}
+
+#friend {
+  width: 44px;
+  height: 51px;
+  position: absolute;
+  left: 10px;
+  top: 464px;
+  background-image: url(../images/friend.png);
+}
