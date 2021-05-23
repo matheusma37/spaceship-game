@@ -27,6 +27,7 @@ function start() {
     moveEnemy1();
     moveEnemy2();
     moveFriend();
+    collision();
   }
 
   $(document).keydown(function (e) {
@@ -110,6 +111,37 @@ function start() {
         $("#shoot").remove();
         canShoot = true;
       }
+    }
+  }
+
+  function collision() {
+    var collision1 = ($("#player").collision($("#enemy1")));
+
+    if (collision1.length > 0) {
+      enemy1X = parseInt($("#enemy1").css("left"));
+      enemy1Y = parseInt($("#enemy1").css("top"));
+      explosion1(enemy1X, enemy1Y);
+
+      positionY = parseInt(Math.random() * 334);
+      $("#enemy1").css("left", 694);
+      $("#enemy1").css("top", positionY);
+    }
+  }
+
+  function explosion1(enemy1X, enemy1Y) {
+    $("#background-game").append("<div id='explosion1'></div");
+    $("#explosion1").css("background-image", "url(images/explosion.png)");
+    var div = $("#explosion1");
+    div.css("top", enemy1Y);
+    div.css("left", enemy1X);
+    div.animate({ width: 200, opacity: 0 }, "slow");
+
+    var timeExplosion = window.setInterval(removeExplosion, 1000);
+
+    function removeExplosion() {
+      div.remove();
+      window.clearInterval(timeExplosion);
+      timeExplosion = null;
     }
   }
 
