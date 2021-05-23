@@ -6,13 +6,15 @@ function start() {
   $("#background-game").append("<div id='enemy2'></div>");
   $("#background-game").append("<div id='friend' class='animation_friend'></div>");
   $("#background-game").append("<div id='score'></div>");
+  $("#background-game").append("<div id='energy'></div>");
 
   var game = {
     pressed: {},
     timer: setInterval(loop, 30),
     points: 0,
     saved: 0,
-    lost: 0
+    lost: 0,
+    currentEnergy: 3
   }
 
   const KEYS = {
@@ -34,6 +36,7 @@ function start() {
     moveFriend();
     collision();
     score();
+    energy();
   }
 
   $(document).keydown(function (e) {
@@ -129,6 +132,7 @@ function start() {
     var collision6 = ($("#enemy2").collision($("#friend")));
 
     if (collision1.length > 0) {
+      game.currentEnergy--;
       let enemy1X = parseInt($("#enemy1").css("left"));
       let enemy1Y = parseInt($("#enemy1").css("top"));
       explosion1(enemy1X, enemy1Y);
@@ -139,6 +143,7 @@ function start() {
     }
 
     if (collision2.length > 0) {
+      game.currentEnergy--;
       let enemy2X = parseInt($("#enemy2").css("left"));
       let enemy2Y = parseInt($("#enemy2").css("top"));
       explosion2(enemy2X, enemy2Y);
@@ -263,6 +268,24 @@ function start() {
 
   function score() {
     $("#score").html("<h2> Pontos: " + game.points + " Salvos: " + game.saved + " Perdidos: " + game.lost + "</h2>");
+  }
+
+  function energy() {
+    if (game.currentEnergy == 3) {
+      $("#energy").css("background-image", "url(images/energy3.png)");
+    }
+
+    if (game.currentEnergy == 2) {
+      $("#energy").css("background-image", "url(images/energy2.png)");
+    }
+
+    if (game.currentEnergy == 1) {
+      $("#energy").css("background-image", "url(images/energy1.png)");
+    }
+
+    if (game.currentEnergy == 0) {
+      $("#energy").css("background-image", "url(images/energy0.png)");
+    }
   }
 
   function moveBackground() {
