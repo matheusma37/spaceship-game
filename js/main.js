@@ -33,12 +33,16 @@ function start() {
   function movePlayer() {
     if (game.pressed[TECLAS.W]) {
       var top = parseInt($("#player").css("top"));
-      $("#player").css("top", top - 10);
+      if (top >= 10) {
+        $("#player").css("top", top - 10);
+      }
     }
 
     if (game.pressed[TECLAS.S]) {
       var top = parseInt($("#player").css("top"));
-      $("#player").css("top", top + 10);
+      if (top <= 444) {
+        $("#player").css("top", top + 10);
+      }
     }
 
     if (game.pressed[TECLAS.D]) {
