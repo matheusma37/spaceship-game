@@ -5,10 +5,14 @@ function start() {
   $("#background-game").append("<div id='enemy1' class='animation_enemy1'></div>");
   $("#background-game").append("<div id='enemy2'></div>");
   $("#background-game").append("<div id='friend' class='animation_friend'></div>");
+  $("#background-game").append("<div id='score'></div>");
 
   var game = {
     pressed: {},
-    timer: setInterval(loop, 30)
+    timer: setInterval(loop, 30),
+    points: 0,
+    saved: 0,
+    lost: 0
   }
 
   const KEYS = {
@@ -29,6 +33,7 @@ function start() {
     moveEnemy2();
     moveFriend();
     collision();
+    score();
   }
 
   $(document).keydown(function (e) {
@@ -142,6 +147,8 @@ function start() {
     }
 
     if (collision3.length > 0) {
+      game.points += 100;
+
       let enemy1X = parseInt($("#enemy1").css("left"));
       let enemy1Y = parseInt($("#enemy1").css("top"));
 
@@ -151,10 +158,11 @@ function start() {
       positionY = parseInt(Math.random() * 334);
       $("#enemy1").css("left", 694);
       $("#enemy1").css("top", positionY);
-
     }
 
     if (collision4.length > 0) {
+      game.points += 50;
+
       let enemy2X = parseInt($("#enemy2").css("left"));
       let enemy2Y = parseInt($("#enemy2").css("top"));
       $("#enemy2").remove();
@@ -165,11 +173,14 @@ function start() {
     }
 
     if (collision5.length > 0) {
+      game.saved++;
       replaceFriend();
       $("#friend").remove();
     }
 
     if (collision6.length > 0) {
+      game.lost++;
+
       friendX = parseInt($("#friend").css("left"));
       friendY = parseInt($("#friend").css("top"));
       explosion3(friendX, friendY);
@@ -248,6 +259,10 @@ function start() {
         $("#background-game").append("<div id='friend' class='animation_friend'></div>");
       }
     }
+  }
+
+  function score() {
+    $("#score").html("<h2> Pontos: " + game.points + " Salvos: " + game.saved + " Perdidos: " + game.lost + "</h2>");
   }
 
   function moveBackground() {
