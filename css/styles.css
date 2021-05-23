@@ -75,3 +75,10 @@ body {
   top: 464px;
   background-image: url(../images/friend.png);
 }
+
+#shoot {
+  width: 50px;
+  height: 8px;
+  position: absolute;
+  background-image: url(../images/shoot.png);
+}

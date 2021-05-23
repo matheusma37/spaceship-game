@@ -19,6 +19,7 @@ function start() {
 
   const SPEED = 5;
   var enemy1PositionY = parseInt(Math.random() * 334);
+  var canShoot = true;
 
   function loop() {
     moveBackground();
@@ -52,6 +53,7 @@ function start() {
     }
 
     if (game.pressed[KEYS.D]) {
+      shoot();
     }
   }
 
@@ -65,11 +67,6 @@ function start() {
       $("#enemy1").css("left", 694);
       $("#enemy1").css("top", enemy1PositionY);
     }
-  }
-
-  function moveBackground() {
-    left = parseInt($("#background-game").css("background-position"));
-    $("#background-game").css("background-position", left - 1);
   }
 
   function moveEnemy2() {
@@ -88,5 +85,36 @@ function start() {
     if (positionX > 906) {
       $("#friend").css("left", 0);
     }
+  }
+
+  function shoot() {
+    if (canShoot) {
+      canShoot = false;
+      let top = parseInt($("#player").css("top"));
+      let positionX = parseInt($("#player").css("left"))
+      let shootX = positionX + 190;
+      let topShoot = top + 37;
+      $("#background-game").append("<div id='shoot'></div>");
+      $("#shoot").css("top", topShoot);
+      $("#shoot").css("left", shootX);
+      var shootTime = window.setInterval(makeShoot, 30);
+    }
+
+    function makeShoot() {
+      positionX = parseInt($("#shoot").css("left"));
+      $("#shoot").css("left", positionX + 15);
+
+      if (positionX > 900) {
+        window.clearInterval(shootTime);
+        shootTime = null;
+        $("#shoot").remove();
+        canShoot = true;
+      }
+    }
+  }
+
+  function moveBackground() {
+    left = parseInt($("#background-game").css("background-position"));
+    $("#background-game").css("background-position", left - 1);
   }
 }
