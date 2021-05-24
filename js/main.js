@@ -57,6 +57,11 @@ function start() {
     game.pressed[e.which] = false;
   });
 
+  function moveBackground() {
+    left = parseInt($("#background-game").css("background-position"));
+    $("#background-game").css("background-position", left - 1);
+  }
+
   function movePlayer() {
     if (game.pressed[KEYS.W]) {
       var top = parseInt($("#player").css("top"));
@@ -301,11 +306,26 @@ function start() {
 
     if (game.currentEnergy == 0) {
       $("#energy").css("background-image", "url(images/energy0.png)");
+      endGame();
     }
   }
 
-  function moveBackground() {
-    left = parseInt($("#background-game").css("background-position"));
-    $("#background-game").css("background-position", left - 1);
+  function endGame() {
+    gameOver = true;
+    music.pause();
+    gameOverSound.play();
+
+    window.clearInterval(game.timer);
+    game.timer = null;
+
+    $("#player").remove();
+    $("#enemy1").remove();
+    $("#enemy2").remove();
+    $("#friend").remove();
+
+    $("#background-game").append("<div id='end-game'></div>");
+
+    $("#end-game").html("<h1> Game Over </h1><p>Sua pontuação foi: " + game.points + "</p>"
+      + "<div id='restart' onClick=restartGame()><h3>Jogar Novamente</h3></div>");
   }
 }
