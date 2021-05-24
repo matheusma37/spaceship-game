@@ -28,6 +28,16 @@ function start() {
   var canShoot = true;
   var gameOver = false;
 
+  var shootSound = document.getElementById("shoot-sound");
+  var explosionSound = document.getElementById("explosion-sound");
+  var music = document.getElementById("music");
+  var gameOverSound = document.getElementById("game-over-sound");
+  var lostSound = document.getElementById("lost-sound");
+  var rescueSound = document.getElementById("rescue-sound");
+
+  music.addEventListener("ended", () => { music.currentTime = 0; music.play(); }, false);
+  music.play();
+
   function loop() {
     moveBackground();
     movePlayer();
@@ -99,6 +109,7 @@ function start() {
 
   function shoot() {
     if (canShoot) {
+      shootSound.play();
       canShoot = false;
       let top = parseInt($("#player").css("top"));
       let positionX = parseInt($("#player").css("left"))
@@ -179,12 +190,14 @@ function start() {
     }
 
     if (collision5.length > 0) {
+      rescueSound.play();
       game.saved++;
       replaceFriend();
       $("#friend").remove();
     }
 
     if (collision6.length > 0) {
+      lostSound.play();
       game.lost++;
 
       friendX = parseInt($("#friend").css("left"));
@@ -197,6 +210,7 @@ function start() {
   }
 
   function explosion1(enemy1X, enemy1Y) {
+    explosionSound.play();
     $("#background-game").append("<div id='explosion1'></div");
     $("#explosion1").css("background-image", "url(images/explosion.png)");
     var div = $("#explosion1");
@@ -214,6 +228,7 @@ function start() {
   }
 
   function explosion2(enemy2X, enemy2Y) {
+    explosionSound.play();
     $("#background-game").append("<div id='explosion2'></div");
     $("#explosion2").css("background-image", "url(images/explosion.png)");
     var div2 = $("#explosion2");
