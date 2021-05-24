@@ -35,6 +35,7 @@ function start() {
   var lostSound = document.getElementById("lost-sound");
   var rescueSound = document.getElementById("rescue-sound");
 
+  gameOverSound.pause();
   music.addEventListener("ended", () => { music.currentTime = 0; music.play(); }, false);
   music.play();
 
@@ -326,6 +327,11 @@ function start() {
     $("#background-game").append("<div id='end-game'></div>");
 
     $("#end-game").html("<h1> Game Over </h1><p>Sua pontuação foi: " + game.points + "</p>"
-      + "<div id='restart' onClick=restartGame()><h3>Jogar Novamente</h3></div>");
+      + "<div id='restart' onclick='restartGame()'><h3>Jogar Novamente</h3></div>");
   }
+}
+
+function restartGame() {
+  $("#end-game").remove();
+  start();
 }
